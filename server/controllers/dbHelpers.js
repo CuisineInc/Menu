@@ -8,9 +8,8 @@ module.exports = {
   saveMenuItem: (data, callback) => {
     const query = `INSERT INTO menus(restaurant_id,food_option,food_category,meal_name,meal_description,meal_price) VALUES($1,$2,$3,$4,$5,$6)`
     pool.query(query, data, (err) => {
-      if (err) {
-        callback(err);
-      }
+      if (err) callback(err);
+      callback(null);
     });
   },
 
@@ -26,6 +25,7 @@ module.exports = {
     const query = `SELECT NOW()`
     pool.query(query, (err) => {
       if (err) callback(err);
+      callback(null);
     })
   },
 
@@ -33,6 +33,7 @@ module.exports = {
     const query = `SELECT NOW()`
     pool.query(query, (err) => {
       if (err) callback(err);
+      callback(null);
     })
   }
 }

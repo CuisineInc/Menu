@@ -75,7 +75,7 @@ app.post('/api/restaurants/:id/menu', (req, res) => {
 });
 
 app.put('/api/restaurants/:id/menu', (req, res) => {
-  const meal = req.body.id;
+  const mealID = req.body.id;
   db.updateMenuItem(mealID, (err) => {
     if (err) {
       res.status(500).send(err);
@@ -85,7 +85,7 @@ app.put('/api/restaurants/:id/menu', (req, res) => {
 });
 
 app.delete('/api/restaurants/:id/menu', (req, res) => {
-  const meal = req.body.id;
+  const mealID = req.query.id;
   db.deleteMenuItem(mealID, (err) => {
     if (err) {
       res.status(500).send(err);
@@ -94,6 +94,11 @@ app.delete('/api/restaurants/:id/menu', (req, res) => {
   })
 });
 
+app.listen(port, () => { console.log(`server ${port} is listening...`); });
+
+module.exports.app = app;
+
+// GET request for mongo db
 // app.get('/api/:L/menu', (req, res) => {
 //   const menuId = req.params.L;
 //   findMenu(menuId)
@@ -111,7 +116,3 @@ app.delete('/api/restaurants/:id/menu', (req, res) => {
 //     });
 // });
 
-
-app.listen(port, () => { console.log(`server ${port} is listening...`); });
-
-module.exports.app = app;
