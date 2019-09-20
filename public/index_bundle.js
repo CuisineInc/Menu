@@ -167,8 +167,7 @@ function (_React$Component) {
     value: function getMenuData() {
       var _this2 = this;
 
-      var id = window.location.pathname.split('/')[1].slice(1);
-      jquery__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://ec2-18-219-139-83.us-east-2.compute.amazonaws.com:3004/api/".concat(id === undefined ? '1' : id, "/menu"), function (result) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api".concat(window.location.pathname, "menu"), function (result) {
         var selectedMealOption = _this2.getMealOptionList(result[0])[0];
 
         _this2.setState({
@@ -227,17 +226,19 @@ function (_React$Component) {
         className: _css_modules_app_css__WEBPACK_IMPORTED_MODULE_5___default.a.jrContainer
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_modules_app_css__WEBPACK_IMPORTED_MODULE_5___default.a.mealOptions
-      }, mealOptions.map(function (mealOption) {
+      }, mealOptions.map(function (mealOption, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MealOption__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: i,
           selected: selectedMealOption === mealOption,
           changeMeal: _this3.handleViewChange,
           mealOption: mealOption
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: fullMenuIsVisible ? _css_modules_app_css__WEBPACK_IMPORTED_MODULE_5___default.a.meals2 : _css_modules_app_css__WEBPACK_IMPORTED_MODULE_5___default.a.meals
-      }, Object.keys(categories).map(function (categoryName) {
+      }, Object.keys(categories).map(function (categoryName, i) {
         var dishes = categories[categoryName];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Category__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: i.key,
           categoryName: categoryName,
           dishes: dishes
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
@@ -288,14 +289,16 @@ var Category = function Category(props) {
     className: _css_modules_category_css__WEBPACK_IMPORTED_MODULE_2___default.a.name
   }, categoryName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _css_modules_category_css__WEBPACK_IMPORTED_MODULE_2___default.a.dishContainer
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, dishes1.map(function (dish) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, dishes1.map(function (dish, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dish__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: i,
       name: dish[0],
       description: dish[1].description,
       price: dish[1].price
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, dishes2.map(function (dish) {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, dishes2.map(function (dish, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dish__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: i,
       name: dish[0],
       description: dish[1].description,
       price: dish[1].price

@@ -15,9 +15,9 @@ const Category = (props) => {
       <div className={styles.dishContainer}>
         <div>
           {dishes1.map(
-            (dish) => (
+            (dish, i) => (
               <div>
-                <Dish name={dish[0]} description={dish[1].description} price={dish[1].price} />
+                <Dish key={i} name={dish[0]} description={dish[1].description} price={dish[1].price} />
                 <br />
               </div>
             ),
@@ -25,9 +25,9 @@ const Category = (props) => {
         </div>
         <div>
           {dishes2.map(
-            (dish) => (
+            (dish, i) => (
               <div>
-                <Dish name={dish[0]} description={dish[1].description} price={dish[1].price} />
+                <Dish key={i} name={dish[0]} description={dish[1].description} price={dish[1].price} />
                 <br />
               </div>
             ),

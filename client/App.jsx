@@ -29,8 +29,7 @@ class Menu extends React.Component {
 
   // get menu data from server
   getMenuData() {
-    const id = window.location.pathname.split('/')[1].slice(1);
-    $.get(`http://ec2-18-219-139-83.us-east-2.compute.amazonaws.com:3004/api/${id === undefined ? '1' : id}/menu`, (result) => {
+    $.get(`/api${window.location.pathname}menu`, (result) => {
       const selectedMealOption = this.getMealOptionList(result[0])[0];
       this.setState({ menu: result[0], selectedMealOption, isLoading: false });
     });
@@ -70,8 +69,9 @@ class Menu extends React.Component {
           <hr />
           <div className={styles.mealOptions}>
             {
-          mealOptions.map((mealOption) => (
-            <MealOption
+          mealOptions.map((mealOption, i) => (
+            <MealOption 
+              key={i}
               selected={selectedMealOption === mealOption}
               changeMeal={this.handleViewChange}
               mealOption={mealOption}
@@ -82,11 +82,11 @@ class Menu extends React.Component {
           <hr />
         </div>
         <div className={fullMenuIsVisible ? styles.meals2 : styles.meals}>
-          {Object.keys(categories).map((categoryName) => {
+          {Object.keys(categories).map((categoryName, i) => {
             const dishes = categories[categoryName];
             return (
               <div>
-                <Category categoryName={categoryName} dishes={dishes} />
+                <Category key={i.key} categoryName={categoryName} dishes={dishes} />
                 <hr />
               </div>
             );
