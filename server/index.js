@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -57,7 +58,8 @@ app.get('/api/restaurants/:id/menu', (req, res) => {
       item[key] = menu[key];
       menuData.push(item)
     }
-    res.status(200).send(menuData);
+    // res.status(200).send(menuData);
+    res.send(menuData);
   });
 });
 
