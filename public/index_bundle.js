@@ -167,7 +167,7 @@ function (_React$Component) {
     value: function getMenuData() {
       var _this2 = this;
 
-      jquery__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api".concat(window.location.pathname, "menu"), function (result) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:3004/api".concat(window.location.pathname, "menu"), function (result) {
         var selectedMealOption = _this2.getMealOptionList(result[0])[0];
 
         _this2.setState({
@@ -689,7 +689,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('menu'));
 
 /***/ }),
 

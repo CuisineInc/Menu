@@ -13,13 +13,14 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use('/restaurants/:id', express.static('public'));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-});
+})
 
 app.get('/api/restaurants/:id/menu', (req, res) => {
   const rID = req.params.id;
@@ -99,22 +100,3 @@ app.delete('/api/restaurants/:id/menu', (req, res) => {
 app.listen(port, () => { console.log(`server ${port} is listening...`); });
 
 module.exports.app = app;
-
-// GET request for mongo db
-// app.get('/api/:L/menu', (req, res) => {
-//   const menuId = req.params.L;
-//   findMenu(menuId)
-//     .then((result) => {
-//       const memo = [{}];
-//       const entries = Object.entries(result[0]);
-//       const menuData = Object.entries(entries[3][1]);
-//       menuData.forEach((entry) => {
-//         if (entry[0] !== 'id' && entry[0] !== '_id' && entry[0] !== '__v') {
-//           // eslint-disable-next-line prefer-destructuring
-//           memo[0][entry[0]] = entry[1];
-//         }
-//       });
-//       res.send(memo);
-//     });
-// });
-

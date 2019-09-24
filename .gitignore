@@ -1,5 +1,6 @@
 database/models/postgres_config.js
 database/models/data/
+newrelic.js
 
 ## MAC files ##
 .DS_Store

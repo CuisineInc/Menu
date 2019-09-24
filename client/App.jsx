@@ -29,7 +29,7 @@ class Menu extends React.Component {
 
   // get menu data from server
   getMenuData() {
-    $.get(`/api${window.location.pathname}menu`, (result) => {
+    $.get(`http://localhost:3004/api${window.location.pathname}menu`, (result) => {
       const selectedMealOption = this.getMealOptionList(result[0])[0];
       this.setState({ menu: result[0], selectedMealOption, isLoading: false });
     });
@@ -70,7 +70,7 @@ class Menu extends React.Component {
           <div className={styles.mealOptions}>
             {
           mealOptions.map((mealOption, i) => (
-            <MealOption 
+            <MealOption
               key={i}
               selected={selectedMealOption === mealOption}
               changeMeal={this.handleViewChange}
