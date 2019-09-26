@@ -1,8 +1,6 @@
-const { Pool, Client } = require('pg')
-const pool = new Pool({
-    host: 'localhost',
-    database: 'restaurants'
-});
+const { Pool, Client } = require('pg');
+const pconfig = require('../../database/models/postgres_config.js');
+const pool = new Pool(pconfig);
 
 module.exports = {
   saveMenuItem: (data, callback) => {

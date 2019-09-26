@@ -26,6 +26,7 @@ app.get('/api/restaurants/:id/menu', (req, res) => {
   const rID = req.params.id;
   db.getMenuItems(rID, (err, data) => {
     if (err) {
+      throw err;
       res.status(500).send(err);
     }    const menu = {};
     for (var i = 0; i < data.length; i ++) {
